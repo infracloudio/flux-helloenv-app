@@ -11,19 +11,14 @@ jobs:
       - shell: bash
         run: |
           env | sort
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         name: checkout
-        with:
-          ref: main
-      - name: Get tag version
-        id: check-tag
-        run: |
-          echo "::set-output name=TAG::${{ github.event.head_commit.tag }}"
+      
       - uses: repo-sync/pull-request@v2
         name: pull-request
         with:
           destination_branch: "main"
-          pr_title: "${{  steps.check-tag.outputs.TAG }}"
-          pr_body: "A new version of the image is available "
+          pr_title: "Flux automatic image update"
+          pr_body: "A new version of the image is available"
           pr_draft: false
           github_token: ${{ secrets.GITHUB_TOKEN }}
