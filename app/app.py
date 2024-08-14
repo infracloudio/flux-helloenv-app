@@ -21,7 +21,7 @@ def hello():
     else:
         return f"This is an unknown environment with (Version: {VERSION})"
 
-@app.route("/route")
+@app.route("/info")
 def hello():
     ENV = os.environ.get("ENV")  # Read the environment variable
     VERSION = os.environ.get("VERSION")  #Read the version variable
