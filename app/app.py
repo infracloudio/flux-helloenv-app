@@ -21,6 +21,18 @@ def hello():
     else:
         return f"This is an unknown environment with (Version: {VERSION})"
 
+@app.route("/route")
+def hello():
+    ENV = os.environ.get("ENV")  # Read the environment variable
+    VERSION = os.environ.get("VERSION")  #Read the version variable
+
+    if ENV == "prod":
+        return f"This is  new production environment (Version: {VERSION})"
+    elif ENV == "stage":
+        return f"This is a staging environment with (Version: {VERSION})"
+    else:
+        return f"This is an unknown environment with (Version: {VERSION})"
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
 
